@@ -2,6 +2,8 @@ const showdown  = require('showdown');
 const doT = require('dot');
 const fs = require('fs');
 
+showdown.setFlavor('github');
+
 const postsFolder = './posts';
 const postTemplate = './build/post_template.dot';
 const homeTemplate = './build/home_template.dot';
