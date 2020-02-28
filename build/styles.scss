@@ -1,0 +1,123 @@
+$fa-font-path: "./webfonts";
+
+@import "../assets/scss/fontawesome.scss";
+@import "../assets/scss/solid.scss";
+
+@keyframes colordance {
+    0% {
+        color: #379683;
+    }
+
+    20% {
+        color: #05386B;
+    }
+
+    40% {
+        color: #2ECC40;
+    }
+
+    60% {
+        color: #FFDC00;
+    }
+
+    80% {
+        color: #7B2182;
+    }
+
+    100% {
+        color: #379683;
+    }
+}
+
+html {
+    background: #EDF5E1;
+    font-size: 62.5%;
+
+    h1 {
+        border-bottom: 4px double #379683;
+        color: #05386B;
+        display: inline-block;
+        font-size: 4.5rem;
+    }
+
+    h2 {
+        border-bottom: 4px double #379683;
+        color: #05386B;
+        display: inline-block;
+        font-size: 2.6rem;
+        margin-bottom: .5rem;
+    }
+
+    h3 {
+        font-size: 2.1rem;
+    }
+
+    h4 {
+        border-bottom: 2px dotted #379683;
+        font-size: 1.6rem;
+        display: inline-block;
+        margin: 0;
+    }
+
+    a {
+        color: #379683;
+        font-size: 1.6rem;
+
+        &.back {
+            @extend %fa-icon;
+            @extend .fas;
+
+            text-decoration: none;
+
+            &:before {
+                content: fa-content($fa-var-arrow-left);
+                margin-right: .25rem;
+            }
+        }
+
+        &:hover,
+        &:focus {
+            animation-duration: 1s;
+            animation-name: colordance;
+            animation-iteration-count: infinite;
+        }
+    }
+
+    p {
+        font-size: 1.6rem;
+        text-align: justify;
+
+        a[target="_blank"] {
+            @extend %fa-icon;
+            @extend .fas;
+
+            &:after {
+                content: fa-content($fa-var-external-link-alt);
+                margin-left: .25rem;
+            }
+        }
+
+        > code {
+            background: #379683;
+            color: #FFF;
+            padding: 0 0.3rem;
+        }
+    }
+
+    pre {
+        code {
+            font-size: 1.4rem !important;
+        }
+    }
+
+    main {
+        margin: 0 auto;
+        width: 960px;
+
+        .post {
+            .heading-wrapper {
+                text-align: center;
+            }
+        }
+    }
+}

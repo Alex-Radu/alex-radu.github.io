@@ -6,10 +6,16 @@
     <title>{{=it.postName}}</title>
 
     <link rel="stylesheet" href="../assets/prism.css">
+    <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body class="line-numbers">
-{{=it.postContent}}
+    <main>
+        <a class="back" href="/index.html">Back</a>
+        <article class="post">
+            {{=it.postContent}}
+        </article>
+    </main>
 
-<script src="../assets/prism.js"></script>
+    <script src="../assets/prism.js"></script>
 </body>
 </html>
