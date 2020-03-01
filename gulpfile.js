@@ -30,7 +30,7 @@ gulp.task('connect', (done) => {
 });
 
 gulp.task('watch:md', (done) => {
-    gulp.watch('./posts/*.md', gulp.series('md'));
+    gulp.watch('./_posts/*.md', gulp.series('md'));
     done();
 });
 

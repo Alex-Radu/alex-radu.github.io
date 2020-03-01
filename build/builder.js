@@ -1,9 +1,11 @@
 const showdown  = require('showdown');
 const doT = require('dot');
 const fs = require('fs');
+const moment = require('moment');
 
 showdown.setFlavor('github');
 showdown.setOption('noHeaderId', true);
+showdown.setOption('metadata', true);
 
 const bindings = {
     type: 'output',
@@ -15,28 +17,48 @@ const converter = new showdown.Converter({
     extensions: [bindings]
 });
 
-const postsFolder = './posts';
+const postsFolder = './_posts';
+const destFolder = './posts';
 const postTemplate = './build/post_template.dot';
 const homeTemplate = './build/home_template.dot';
 
-fs.readdir('./posts', (error, filenames) => {
-    filenames.forEach(filename => {
+fs.readdir(postsFolder, (error, filenames) => {
+    let postsMetadata = [];
+
+    filenames.forEach((filename, index) => {
         fs.readFile(`${postsFolder}/${filename}`, 'utf8', (err, content) => {
             const postContent = converter.makeHtml(content);
+            const postMetadata = converter.getMetadata();
             const postName = filename.replace('.md', '');
-            var tempFn = doT.template(fs.readFileSync(postTemplate));
-            var resultText = tempFn({
+            const { mtime: modified, birthtime: created } = fs.statSync(`${postsFolder}/${filename}`);
+            const tempFn = doT.template(fs.readFileSync(postTemplate));
+            const resultText = tempFn({
                 postName,
                 postContent,
             });
+            const metadata = {
+                birthday: moment(created).date(),
+                birthmonth: moment(created).month() + 1,
+                birthyear: moment(created).year(),
+                labelCreated: moment(created).fromNow(),
+                labelModified: moment(modified).fromNow(),
+                name: postName,
+                ...postMetadata
+            }
+            const postDestinationFolder = `./${destFolder}/${metadata.birthyear}/${metadata.birthmonth}/${metadata.birthday}`;
 
-            fs.writeFileSync(`./dist/${postName}.html`, resultText);
+            postsMetadata.push(metadata);
+            fs.mkdirSync(postDestinationFolder, { recursive: true });
+            fs.writeFileSync(`${postDestinationFolder}/${postName}.html`, resultText);
+
+            if (index === filenames.length - 1) buildHomepage(postsMetadata);
         });
     });
+});
 
-    const simpleFileNames = filenames.map(filename => filename.replace('.md', ''));
+function buildHomepage(postsMetadata) {
     const homePage = doT.template(fs.readFileSync(homeTemplate));
-    const renderedHomePage = homePage({ pages: simpleFileNames });
+    const renderedHomePage = homePage({ posts: postsMetadata });
 
     fs.writeFileSync('./index.html', renderedHomePage);
-});
+}

@@ -1,3 +1,7 @@
+---
+summary: In this post I talk about how to set up some nice Gulp tasks that will help speed up development and also about my favourite SCSS feature
+tags: gulp, scss
+---
 # Improving the Looks and the Dev environment
 
 So now that I am generating all the pages, I am noticing some things that need urgent attention:

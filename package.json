@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run clean && npm run build:content && npm run build:styles && npm run format",
-    "clean": "rm -f ./dist/*.html && rm -f ./index.html",
+    "clean": "rm -f ./posts/*.html && rm -f ./index.html",
     "build:content": "node ./build/builder.js",
     "build:styles": "sass ./build/styles.scss ./assets/styles.css",
-    "format": "prettier --write ./dist/*.html && prettier --write ./index.html"
+    "format": "prettier --write ./posts/**/*.html && prettier --write ./index.html"
   },
   "author": "Alex-Radu",
   "license": "MIT",
@@ -20,6 +20,7 @@
     "gulp": "^4.0.2",
     "gulp-connect": "^5.7.0",
     "gulp-sass": "^4.0.2",
+    "moment": "^2.24.0",
     "node-sass": "^4.13.1",
     "prettier": "1.19.1",
     "sass": "^1.26.1",

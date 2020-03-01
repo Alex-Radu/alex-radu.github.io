@@ -8,10 +8,11 @@
 <body>
     <h1>This is the homepage</h1>
     <ul>
-    {{~ it.pages :page}}
-    <li>
-        <a href="/dist/{{=page}}.html">{{=page}}</a>
-    </li>
+    {{~ it.posts :post}}
+        <li>
+            <a href="/posts/{{=post.birthyear}}/{{=post.birthmonth}}/{{=post.birthday}}/{{=post.name}}.html">{{=post.name}}</a>
+        </li>
+        <li>{{=post.summary}}</li>
     {{~}}
     </ul>
 </body>
