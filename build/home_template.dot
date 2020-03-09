@@ -4,16 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+
+    <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
     <h1>This is the homepage</h1>
-    <ul>
-    {{~ it.posts :post}}
-        <li>
-            <a href="/posts/{{=post.birthyear}}/{{=post.birthmonth}}/{{=post.birthday}}/{{=post.name}}.html">{{=post.name}}</a>
-        </li>
-        <li>{{=post.summary}}</li>
-    {{~}}
-    </ul>
+    <div class="home-wrapper">
+        <main>
+            {{~ it.posts :post}}
+            <div class="card post-card">
+                <div class="post-card-header">
+                    <h4>{{=post.labelCreated}}</h4>
+                    <h2>
+                        <a href="/posts/{{=post.birthyear}}/{{=post.birthmonth}}/{{=post.birthday}}/{{=post.slug}}.html">{{=post.title}}</a>
+                    </h2>
+                    {{~ post.tags :tag}}
+                        <a class="tag" href="#">{{=tag}}</a>
+                    {{~}}
+                </div>
+                <div class="post-card-content">
+                    <p>{{=post.summary}}</p>
+                </div>
+            </div>
+            {{~}}
+        </main>
+        <aside>
+            <p>I'm in the aside element</p>
+        </aside>
+    </div>
 </body>
 </html>

@@ -36,13 +36,16 @@ fs.readdir(postsFolder, (error, filenames) => {
                 postName,
                 postContent,
             });
+
+            postMetadata.tags = postMetadata.tags.split(', ');
+
             const metadata = {
                 birthday: moment(created).date(),
                 birthmonth: moment(created).month() + 1,
                 birthyear: moment(created).year(),
                 labelCreated: moment(created).fromNow(),
                 labelModified: moment(modified).fromNow(),
-                name: postName,
+                slug: postName,
                 ...postMetadata
             }
             const postDestinationFolder = `./${destFolder}/${metadata.birthyear}/${metadata.birthmonth}/${metadata.birthday}`;
@@ -51,6 +54,7 @@ fs.readdir(postsFolder, (error, filenames) => {
             fs.mkdirSync(postDestinationFolder, { recursive: true });
             fs.writeFileSync(`${postDestinationFolder}/${postName}.html`, resultText);
 
+            // I do this here because async stuff
             if (index === filenames.length - 1) buildHomepage(postsMetadata);
         });
     });

@@ -1,12 +1,17 @@
+---
+title: Basic SSG (Static Site Generator)
+summary: Some basic setup to take some Markdown files, compile them into HTML ones and end up with a functional static website
+tags: doT, shinedown, nodejs
+---
 # Basic SSG (Static Site Generator)
 
 ## Intro
 The plan here is for me to write blog posts in **Markdown** and have some code in place that converts it to **HTML** and makes it accessible via a link from the `index.html` page. While the plan is to develop this into something smarter and fancier, for this first step, something simple will suffice.
 
 ## Get set
-The first thing I need is a Markdown to HTML converter written in Javascript; for this I chose <a href="https://github.com/showdownjs/showdown" target="_blank">Showdown</a> for the simple reason of being the first result on Google and having lots of stars on GitHub.
+The first thing I need is a Markdown to HTML converter written in Javascript; for this I chose <a href="https://github.com/showdownjs/showdown" class="trippy" target="_blank">Showdown</a> for the simple reason of being the first result on Google and having lots of stars on GitHub.
 
-Next I will need a template engine. The reason here is because Markdown, converted to HTML, is a collection of tags, but not an HTML page; it doesn't have all the `<html>`, `<head>`, `<body>`, etc. tags that are needed in a page. So I want to write a template for an HTML page and in it, fill in just the content that comes from the Markdown file. I chose <a href="https://github.com/olado/doT" target="_blank">doT</a> because it looked (and is) simple and I already had used Moustache and wanted to try something else.
+Next I will need a template engine. The reason here is because Markdown, converted to HTML, is a collection of tags, but not an HTML page; it doesn't have all the `<html>`, `<head>`, `<body>`, etc. tags that are needed in a page. So I want to write a template for an HTML page and in it, fill in just the content that comes from the Markdown file. I chose <a href="https://github.com/olado/doT" class="trippy" target="_blank">doT</a> because it looked (and is) simple and I already had used Moustache and wanted to try something else.
 
 ## Go
 A very basic template might look like this:

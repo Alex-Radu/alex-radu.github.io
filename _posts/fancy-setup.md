@@ -1,4 +1,5 @@
 ---
+title: Improving the Looks and the Dev environment
 summary: In this post I talk about how to set up some nice Gulp tasks that will help speed up development and also about my favourite SCSS feature
 tags: gulp, scss
 ---
@@ -10,14 +11,14 @@ So now that I am generating all the pages, I am noticing some things that need u
 * the pages look ugly - this happens in the absence of CSS
 
 ## Setting up a better Dev environment
-For this, I want to make use of <a href="https://gulpjs.com" target="_blank">Gulp</a> which, according to their description, is:
+For this, I want to make use of <a href="https://gulpjs.com" class="trippy" target="_blank">Gulp</a> which, according to their description, is:
 
 >a toolkit for automating painful or time-consuming tasks in your development workflow, so you can stop messing around and build something
 
 And this sounds great. As far as the tasks I want to define, I'm thinking about the following:
 
 * I want to have a webserver with live reload when different files are changed
-* I want to compile my `.scss` files into `.css` ones (oh yeah, I'll use <a href="https://sass-lang.com/" target="_blank">SCSS</a> to write the styles, because it's awesome)
+* I want to compile my `.scss` files into `.css` ones (oh yeah, I'll use <a href="https://sass-lang.com/" class="trippy" target="_blank">SCSS</a> to write the styles, because it's awesome)
 
 I'll just slap what I wrote to fulfill these wishes and I'll add some comments:
 
@@ -76,7 +77,7 @@ gulp.task('default', gulp.parallel('connect', 'watch:md', 'watch:sass'));
 
 ## Making things beautiful
 
-Here, things depend on preferences and taste so there won't be step by step instructions. I'm using <a href="https://prismjs.com" target="_blank">PrismJS</a> for adding styles to the code blocks. And, as previously mentioned, I use SCSS(SASS) for writting the styles. It has a lot of nice things for which I prefer it, but for the moment, the most important one is the ability to nest rules. Like so:
+Here, things depend on preferences and taste so there won't be step by step instructions. I'm using <a href="https://prismjs.com" class="trippy" target="_blank">PrismJS</a> for adding styles to the code blocks. And, as previously mentioned, I use SCSS(SASS) for writting the styles. It has a lot of nice things for which I prefer it, but for the moment, the most important one is the ability to nest rules. Like so:
 
 ```css
 html {

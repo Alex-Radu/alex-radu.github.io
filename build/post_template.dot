@@ -10,7 +10,7 @@
 </head>
 <body class="line-numbers">
     <main>
-        <a class="back" href="/index.html">Back</a>
+        <a class="back trippy" href="/index.html">Back</a>
         <article class="post">
             {{=it.postContent}}
         </article>
