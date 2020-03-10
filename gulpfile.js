@@ -1,13 +1,15 @@
 const gulp = require('gulp');
 const connect = require('gulp-connect');
 const sass = require('gulp-sass');
+const rename = require('gulp-rename');
 const cp = require('child_process');
 
 sass.compiler = require('node-sass');
 
 gulp.task('sass', () => {
-    return gulp.src('./build/*.scss')
+    return gulp.src('./src/styles/index.scss')
         .pipe(sass().on('error', sass.logError))
+        .pipe(rename('styles.css'))
         .pipe(gulp.dest('./assets'))
         .pipe(connect.reload());
 });
@@ -35,7 +37,7 @@ gulp.task('watch:md', (done) => {
 });
 
 gulp.task('watch:sass', (done) => {
-    gulp.watch('./build/*.scss', gulp.series('sass'));
+    gulp.watch('./src/styles/**/*.scss', gulp.series('sass'));
     done();
 });
 

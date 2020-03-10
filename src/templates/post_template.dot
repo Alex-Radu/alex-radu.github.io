@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/assets/prism.css">
     <link rel="stylesheet" href="/assets/styles.css">
 </head>
-<body class="line-numbers">
+<body class="post line-numbers">
     <main>
         <a class="back trippy" href="/index.html">Back</a>
         <article class="post">

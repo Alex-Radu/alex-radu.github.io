@@ -65,7 +65,7 @@ fs.readdir('./posts', (error, filenames) => {
 
 So now, if I have an initial `test.md` file that contains "`# This is a heading`", after I run
 
-```
+```bash
 node ./builder.js
 ```
 

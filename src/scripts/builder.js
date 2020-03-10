@@ -19,8 +19,8 @@ const converter = new showdown.Converter({
 
 const postsFolder = './_posts';
 const destFolder = './posts';
-const postTemplate = './build/post_template.dot';
-const homeTemplate = './build/home_template.dot';
+const postTemplate = './src/templates/post_template.dot';
+const homeTemplate = './src/templates/home_template.dot';
 
 fs.readdir(postsFolder, (error, filenames) => {
     let postsMetadata = [];

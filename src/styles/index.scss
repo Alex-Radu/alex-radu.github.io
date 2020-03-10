@@ -1,0 +1,104 @@
+/* <----------- VARIABLES -----------> */
+$fa-font-path: "./webfonts";
+
+/* <----------- EXTERNAL -----------> */
+@import "../../assets/scss/fontawesome.scss";
+@import "../../assets/scss/solid.scss";
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap');
+
+/* <----------- CUSTOM -----------> */
+@import "./home_page.scss";
+@import "./post_page.scss";
+
+/* <----------- COMMON -----------> */
+@keyframes colordance {
+  0% {
+    color: #379683;
+  }
+
+  20% {
+    color: #05386B;
+  }
+
+  40% {
+    color: #2ECC40;
+  }
+
+  60% {
+    color: #FFDC00;
+  }
+
+  80% {
+    color: #7B2182;
+  }
+
+  100% {
+    color: #379683;
+  }
+}
+
+html {
+  background: #EDF5E1;
+  color: #333333;
+  font-size: 62.5%;
+
+  p {
+    font-size: 1.6rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  h4 {
+    font-size: 1.4rem;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto Slab', serif;
+}
+
+a.trippy {
+  color: #379683;
+  font-size: 1.6rem;
+
+  &.back {
+      @extend %fa-icon;
+      @extend .fas;
+
+      text-decoration: none;
+
+      &:before {
+          content: fa-content($fa-var-arrow-left);
+          margin-right: .25rem;
+      }
+  }
+
+  &:hover,
+  &:focus {
+      animation-duration: 1s;
+      animation-name: colordance;
+      animation-iteration-count: infinite;
+  }
+}
+
+a[target="_blank"] {
+  @extend %fa-icon;
+  @extend .fas;
+
+  &:after {
+    content: fa-content($fa-var-external-link-alt);
+    margin-left: .25rem;
+  }
+}

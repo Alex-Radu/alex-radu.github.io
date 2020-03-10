@@ -1,11 +1,14 @@
+/* <----------- VARIABLES -----------> */
+/* <----------- EXTERNAL -----------> */
 /*!
  * Font Awesome Free 5.12.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap");
 .fa,
 .fas,
-html a.trippy.back,
-html a[target="_blank"],
+a.trippy.back,
+a[target="_blank"],
 .far,
 .fal,
 .fad,
@@ -18,7 +21,7 @@ html a[target="_blank"],
   text-rendering: auto;
   line-height: 1; }
 
-html a.trippy.back, html a[target="_blank"] {
+a.trippy.back, a[target="_blank"] {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: inline-block;
@@ -99,8 +102,8 @@ html a.trippy.back, html a[target="_blank"] {
 
 .fa.fa-pull-left,
 .fas.fa-pull-left,
-html a.fa-pull-left.trippy.back,
-html a.fa-pull-left[target="_blank"],
+a.fa-pull-left.trippy.back,
+a.fa-pull-left[target="_blank"],
 .far.fa-pull-left,
 .fal.fa-pull-left,
 .fab.fa-pull-left {
@@ -108,8 +111,8 @@ html a.fa-pull-left[target="_blank"],
 
 .fa.fa-pull-right,
 .fas.fa-pull-right,
-html a.fa-pull-right.trippy.back,
-html a.fa-pull-right[target="_blank"],
+a.fa-pull-right.trippy.back,
+a.fa-pull-right[target="_blank"],
 .far.fa-pull-right,
 .fal.fa-pull-right,
 .fab.fa-pull-right {
@@ -4438,11 +4441,152 @@ readers do not read off random characters that represent icons */
 
 .fa,
 .fas,
-html a.trippy.back,
-html a[target="_blank"] {
+a.trippy.back,
+a[target="_blank"] {
   font-family: 'Font Awesome 5 Free';
   font-weight: 900; }
 
+/* <----------- CUSTOM -----------> */
+body.home .card {
+  background: white;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+  padding: 1.6rem; }
+
+body.home .post-card {
+  border-radius: .5rem;
+  flex: 0 0 300px;
+  display: flex;
+  flex-direction: column; }
+  body.home .post-card .post-card-header {
+    background: #05386B;
+    border-radius: .5rem .5rem 0 0;
+    margin: -1.6rem -1.6rem 0;
+    padding: 0 1.6rem;
+    position: relative; }
+    body.home .post-card .post-card-header a.tag {
+      background-color: #8ee4af;
+      box-shadow: 2px 0px 5px 0px rgba(51, 51, 51, 0.3);
+      color: #05386B;
+      font-size: 1.2rem;
+      font-weight: bold;
+      left: 100%;
+      padding: .2rem 1.2rem;
+      position: absolute;
+      text-decoration: none;
+      transform: translateX(calc(-100% + .8rem)); }
+    body.home .post-card .post-card-header a.tag:nth-of-type(1) {
+      top: calc(1 * 3.4rem - 2.5rem); }
+    body.home .post-card .post-card-header a.tag:nth-of-type(2) {
+      top: calc(2 * 3.4rem - 2.5rem); }
+    body.home .post-card .post-card-header a.tag:nth-of-type(3) {
+      top: calc(3 * 3.4rem - 2.5rem); }
+    body.home .post-card .post-card-header a.tag:nth-of-type(4) {
+      top: calc(4 * 3.4rem - 2.5rem); }
+    body.home .post-card .post-card-header a.tag:nth-of-type(5) {
+      top: calc(5 * 3.4rem - 2.5rem); }
+  body.home .post-card h4 {
+    color: #8EE4AF; }
+  body.home .post-card h2 {
+    padding-right: 6rem; }
+    body.home .post-card h2 a {
+      color: #EDF5E1;
+      text-decoration: none; }
+
+body.home .home-wrapper {
+  margin: 0 auto;
+  width: 1280px;
+  display: flex;
+  border: 1px solid black;
+  padding: 1rem 0; }
+  body.home .home-wrapper main {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1000px;
+    justify-content: space-evenly; }
+  body.home .home-wrapper aside {
+    width: 280px; }
+
+body.post h1 {
+  border-bottom: 4px double #379683;
+  color: #05386B;
+  display: inline-block;
+  font-size: 4.5rem; }
+
+body.post h2 {
+  border-bottom: 4px double #379683;
+  color: #05386B;
+  display: inline-block;
+  font-size: 2.6rem;
+  margin-bottom: .5rem; }
+
+body.post h3 {
+  font-size: 2.1rem; }
+
+body.post h4 {
+  border-bottom: 2px dotted #379683;
+  font-size: 1.6rem;
+  display: inline-block;
+  margin: 0; }
+
+body.post p {
+  font-size: 1.6rem;
+  text-align: justify; }
+
+body.post p > code,
+body.post li > code {
+  background: #379683;
+  color: #FFF;
+  padding: 0 0.3rem; }
+
+body.post ul {
+  font-size: 1.6rem;
+  list-style-type: none;
+  padding-left: 1rem; }
+  body.post ul li {
+    border: 2px solid #8EE4AF;
+    box-shadow: 6px 6px 5px -4px rgba(130, 130, 130, 0.8);
+    margin: 0 0 1rem;
+    padding: 1rem 1.5rem;
+    position: relative; }
+    body.post ul li:before {
+      background: #05386B;
+      border-radius: 50%;
+      content: ' ';
+      display: inline-block;
+      height: 1.5rem;
+      left: -.75rem;
+      position: absolute;
+      top: 1.1rem;
+      width: 1.5rem; }
+
+body.post blockquote {
+  border-left: 10px solid #05386B;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px; }
+  body.post blockquote:before, body.post blockquote:after {
+    color: #05386B;
+    font-size: 4em;
+    line-height: 0.1em;
+    vertical-align: -0.4em; }
+  body.post blockquote:before {
+    content: open-quote;
+    margin-right: 0.25em; }
+  body.post blockquote:after {
+    content: close-quote;
+    margin-left: 0.25em; }
+  body.post blockquote p {
+    display: inline; }
+
+body.post pre code {
+  font-size: 1.4rem !important; }
+
+body.post main {
+  margin: 0 auto;
+  width: 960px; }
+  body.post main .post .heading-wrapper {
+    text-align: center; }
+
+/* <----------- COMMON -----------> */
 @keyframes colordance {
   0% {
     color: #379683; }
@@ -4459,167 +4603,36 @@ html a[target="_blank"] {
 
 html {
   background: #EDF5E1;
-  font-size: 62.5%;
-  /* Home page styles - split later */ }
-  html h1 {
-    border-bottom: 4px double #379683;
-    color: #05386B;
-    display: inline-block;
-    font-size: 4.5rem; }
-  html h2 {
-    border-bottom: 4px double #379683;
-    color: #05386B;
-    display: inline-block;
-    font-size: 2.6rem;
-    margin-bottom: .5rem; }
-  html h3 {
-    font-size: 2.1rem; }
-  html h4 {
-    border-bottom: 2px dotted #379683;
-    font-size: 1.6rem;
-    display: inline-block;
-    margin: 0; }
-  html a.trippy {
-    color: #379683;
-    font-size: 1.6rem; }
-    html a.trippy.back {
-      text-decoration: none; }
-      html a.trippy.back:before {
-        content: "\f060";
-        margin-right: .25rem; }
-    html a.trippy:hover, html a.trippy:focus {
-      animation-duration: 1s;
-      animation-name: colordance;
-      animation-iteration-count: infinite; }
+  color: #333333;
+  font-size: 62.5%; }
   html p {
-    font-size: 1.6rem;
-    text-align: justify; }
-  html p > code,
-  html li > code {
-    background: #379683;
-    color: #FFF;
-    padding: 0 0.3rem; }
-  html ul {
-    font-size: 1.6rem;
-    list-style-type: none;
-    padding-left: 1rem; }
-    html ul li {
-      border: 2px solid #8EE4AF;
-      box-shadow: 6px 6px 5px -4px rgba(130, 130, 130, 0.8);
-      margin: 0 0 1rem;
-      padding: 1rem 1.5rem;
-      position: relative; }
-      html ul li:before {
-        background: #05386B;
-        border-radius: 50%;
-        content: ' ';
-        display: inline-block;
-        height: 1.5rem;
-        left: -.75rem;
-        position: absolute;
-        top: 1.1rem;
-        width: 1.5rem; }
-  html blockquote {
-    border-left: 10px solid #05386B;
-    margin: 1.5em 10px;
-    padding: 0.5em 10px; }
-    html blockquote:before, html blockquote:after {
-      color: #05386B;
-      font-size: 4em;
-      line-height: 0.1em;
-      vertical-align: -0.4em; }
-    html blockquote:before {
-      content: open-quote;
-      margin-right: 0.25em; }
-    html blockquote:after {
-      content: close-quote;
-      margin-left: 0.25em; }
-    html blockquote p {
-      display: inline; }
-  html a[target="_blank"]:after {
-    content: "\f35d";
-    margin-left: .25rem; }
-  html pre code {
-    font-size: 1.4rem !important; }
-  html main {
-    margin: 0 auto;
-    width: 960px; }
-    html main .post .heading-wrapper {
-      text-align: center; }
-  html .card {
-    background: white;
-    box-shadow: 6px 6px 5px -4px rgba(130, 130, 130, 0.8);
-    padding: 1.6rem; }
-    html .card h1, html .card h2, html .card h3, html .card h4 {
-      display: block; }
-  html .post-card {
-    border-radius: .5rem;
-    flex: 0 1 280px;
-    display: flex;
-    flex-direction: column; }
-    html .post-card .post-card-header {
-      background: #05386B;
-      border-radius: .5rem .5rem 0 0;
-      margin: -1.6rem -1.6rem 0;
-      padding: 1.6rem;
-      flex-grow: 0;
-      position: relative; }
-      html .post-card .post-card-header a.tag {
-        padding: .2rem 2.5rem .2rem 1rem;
-        background-color: #8EE4AF;
-        position: relative;
-        font-size: 1.2rem;
-        color: #05386B;
-        font-weight: bold;
-        text-decoration: none;
-        position: absolute;
-        left: 100%;
-        transform: translateX(calc(-100% + 1.5rem)); }
-        html .post-card .post-card-header a.tag:after {
-          content: ' ';
-          transform: rotate(45deg);
-          background: inherit;
-          width: 0;
-          height: 0;
-          background-color: transparent;
-          border-style: solid;
-          border-width: 1.07rem;
-          border-color: transparent;
-          border-right-color: #379683;
-          position: absolute;
-          right: .44rem;
-          top: .7rem; }
-      html .post-card .post-card-header a.tag:nth-of-type(1) {
-        top: calc(1 * 3.4rem - 2.5rem); }
-      html .post-card .post-card-header a.tag:nth-of-type(2) {
-        top: calc(2 * 3.4rem - 2.5rem); }
-      html .post-card .post-card-header a.tag:nth-of-type(3) {
-        top: calc(3 * 3.4rem - 2.5rem); }
-      html .post-card .post-card-header a.tag:nth-of-type(4) {
-        top: calc(4 * 3.4rem - 2.5rem); }
-      html .post-card .post-card-header a.tag:nth-of-type(5) {
-        top: calc(5 * 3.4rem - 2.5rem); }
-    html .post-card .post-card-content {
-      flex-grow: 1; }
-    html .post-card h4 {
-      color: #8EE4AF;
-      border: none; }
-    html .post-card h2 {
-      border: none;
-      padding-right: 6rem; }
-      html .post-card h2 a {
-        color: #EDF5E1;
-        text-decoration: none; }
-  html .home-wrapper {
-    margin: 0 auto;
-    width: 1280px;
-    display: flex;
-    border: 1px solid black;
-    padding: 1rem 0; }
-    html .home-wrapper main {
-      display: flex;
-      flex-wrap: wrap;
-      width: 1000px;
-      justify-content: space-evenly; }
-    html .home-wrapper aside {
-      width: 280px; }
+    font-size: 1.6rem; }
+  html h1 {
+    font-size: 3rem; }
+  html h2 {
+    font-size: 2.4rem; }
+  html h3 {
+    font-size: 2rem; }
+  html h4 {
+    font-size: 1.4rem; }
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto Slab', serif; }
+
+a.trippy {
+  color: #379683;
+  font-size: 1.6rem; }
+  a.trippy.back {
+    text-decoration: none; }
+    a.trippy.back:before {
+      content: "\f060";
+      margin-right: .25rem; }
+  a.trippy:hover, a.trippy:focus {
+    animation-duration: 1s;
+    animation-name: colordance;
+    animation-iteration-count: infinite; }
+
+a[target="_blank"]:after {
+  content: "\f35d";
+  margin-left: .25rem; }
