@@ -1,13 +1,72 @@
-<!DOCTYPE html><html lang="en"><head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>first-steps</title> <link rel="stylesheet" href="/assets/prism.css"> <link rel="stylesheet" href="/assets/styles.css"></head><body class="post line-numbers"> <main> <a class="back trippy" href="/index.html">Back</a> <article class="post"> <div class="heading-wrapper"><h1 >Basic SSG (Static Site Generator)</h1></div>
-<h2>Intro</h2>
-<p>The plan here is for me to write blog posts in <strong>Markdown</strong> and have some code in place that converts it to <strong>HTML</strong> and makes it accessible via a link from the <code>index.html</code> page. While the plan is to develop this into something smarter and fancier, for this first step, something simple will suffice.</p>
-<h2>Get set</h2>
-<p>The first thing I need is a Markdown to HTML converter written in Javascript; for this I chose <a href="https://github.com/showdownjs/showdown" class="trippy" target="_blank">Showdown</a> for the simple reason of being the first result on Google and having lots of stars on GitHub.</p>
-<p>Next I will need a template engine. The reason here is because Markdown, converted to HTML, is a collection of tags, but not an HTML page; it doesn't have all the <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>, etc. tags that are needed in a page. So I want to write a template for an HTML page and in it, fill in just the content that comes from the Markdown file. I chose <a href="https://github.com/olado/doT" class="trippy" target="_blank">doT</a> because it looked (and is) simple and I already had used Moustache and wanted to try something else.</p>
-<h2>Go</h2>
-<p>A very basic template might look like this:</p>
-<h4><strong><code>template.dot</code></strong></h4>
-<pre><code class="html language-html">&lt;!DOCTYPE html&gt;
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>first-steps</title>
+    <link rel="stylesheet" href="/assets/prism.css" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body class="post line-numbers">
+    <nav>
+      <div>
+        <img src="/assets/images/avatar.png" class="avatar" />
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="">Tags</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <a class="back trippy" href="/index.html">Back</a>
+      <article class="post">
+        <div class="heading-wrapper">
+          <h1>Basic SSG (Static Site Generator)</h1>
+        </div>
+        <h2>Intro</h2>
+        <p>
+          The plan here is for me to write blog posts in
+          <strong>Markdown</strong> and have some code in place that converts it
+          to <strong>HTML</strong> and makes it accessible via a link from the
+          <code>index.html</code> page. While the plan is to develop this into
+          something smarter and fancier, for this first step, something simple
+          will suffice.
+        </p>
+        <h2>Get set</h2>
+        <p>
+          The first thing I need is a Markdown to HTML converter written in
+          Javascript; for this I chose
+          <a
+            href="https://github.com/showdownjs/showdown"
+            class="trippy"
+            target="_blank"
+            >Showdown</a
+          >
+          for the simple reason of being the first result on Google and having
+          lots of stars on GitHub.
+        </p>
+        <p>
+          Next I will need a template engine. The reason here is because
+          Markdown, converted to HTML, is a collection of tags, but not an HTML
+          page; it doesn't have all the <code>&lt;html&gt;</code>,
+          <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>, etc. tags that
+          are needed in a page. So I want to write a template for an HTML page
+          and in it, fill in just the content that comes from the Markdown file.
+          I chose
+          <a href="https://github.com/olado/doT" class="trippy" target="_blank"
+            >doT</a
+          >
+          because it looked (and is) simple and I already had used Moustache and
+          wanted to try something else.
+        </p>
+        <h2>Go</h2>
+        <p>A very basic template might look like this:</p>
+        <h4>
+          <strong><code>template.dot</code></strong>
+        </h4>
+        <pre><code class="html language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
   &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -18,10 +77,17 @@
     {{=it.content}}
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<p>I have the required <strong>HTML</strong> tags and for the time being, I'm expecting to fill in the <code>&lt;title&gt;</code> tag with the file name and the <code>&lt;body&gt;</code> tag with everything generated from the Markdown file.</p>
-<p>And now for the bit that brings it all together:</p>
-<h4><strong><code>builder.js</code></strong></h4>
-<pre><code class="js language-js">const showdown  = require('showdown');
+        <p>
+          I have the required <strong>HTML</strong> tags and for the time being,
+          I'm expecting to fill in the <code>&lt;title&gt;</code> tag with the
+          file name and the <code>&lt;body&gt;</code> tag with everything
+          generated from the Markdown file.
+        </p>
+        <p>And now for the bit that brings it all together:</p>
+        <h4>
+          <strong><code>builder.js</code></strong>
+        </h4>
+        <pre><code class="js language-js">const showdown  = require('showdown');
 const doT = require('dot');
 const fs = require('fs');
 
@@ -45,10 +111,15 @@ fs.readdir('./posts', (error, filenames) =&gt; {
         });
     });
 });</code></pre>
-<p>So now, if I have an initial <code>test.md</code> file that contains "<code># This is a heading</code>", after I run</p>
-<pre><code class="bash language-bash">node ./builder.js</code></pre>
-<p>I should see a new <code>test.html</code> file that contains this:</p>
-<pre><code class="html language-html">&lt;!DOCTYPE html&gt;
+        <p>
+          So now, if I have an initial <code>test.md</code> file that contains
+          "<code># This is a heading</code>", after I run
+        </p>
+        <pre><code class="bash language-bash">node ./builder.js</code></pre>
+        <p>
+          I should see a new <code>test.html</code> file that contains this:
+        </p>
+        <pre><code class="html language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
   &lt;head&gt;
     &lt;meta charset="UTF-8" /&gt;
@@ -59,10 +130,16 @@ fs.readdir('./posts', (error, filenames) =&gt; {
     &lt;h1 id="thisisaheading"&gt;This is a heading&lt;/h1&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<h2>The cherry on top</h2>
-<p>Because I also want to update the <em>main</em> page of the website with links to all of the posts, I need a template for this page and to also add a few more lines of code in the <code>builder.js</code> file.</p>
-<h4><strong><code>main_template.dot</code></strong></h4>
-<pre><code class="html language-html">&lt;!DOCTYPE html&gt;
+        <h2>The cherry on top</h2>
+        <p>
+          Because I also want to update the <em>main</em> page of the website
+          with links to all of the posts, I need a template for this page and to
+          also add a few more lines of code in the <code>builder.js</code> file.
+        </p>
+        <h4>
+          <strong><code>main_template.dot</code></strong>
+        </h4>
+        <pre><code class="html language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -80,14 +157,20 @@ fs.readdir('./posts', (error, filenames) =&gt; {
     &lt;/ul&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<p>And inside the callback for the <code>fs.readdir</code> call, at the end, I'll add this:</p>
-<pre><code class="js language-js">const simpleFileNames = filenames.map(filename =&gt; filename.replace('.md', ''));
+        <p>
+          And inside the callback for the <code>fs.readdir</code> call, at the
+          end, I'll add this:
+        </p>
+        <pre><code class="js language-js">const simpleFileNames = filenames.map(filename =&gt; filename.replace('.md', ''));
 const homePage = doT.template(fs.readFileSync('./main_template.dot'));
 const renderedHomePage = homePage({ pages: simpleFileNames });
 
 fs.writeFileSync('./index.html', renderedHomePage);</code></pre>
-<p>Now, when I run the script again, I will have an <code>index.html</code> file that contains this:</p>
-<pre><code class="html language-html">&lt;!DOCTYPE html&gt;
+        <p>
+          Now, when I run the script again, I will have an
+          <code>index.html</code> file that contains this:
+        </p>
+        <pre><code class="html language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
   &lt;head&gt;
     &lt;meta charset="UTF-8" /&gt;
@@ -101,4 +184,9 @@ fs.writeFileSync('./index.html', renderedHomePage);</code></pre>
     &lt;/ul&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<p>This is it for now. See you next time! 😁</p> </article> </main> <script src="/assets/prism.js"></script></body></html>
+        <p>This is it for now. See you next time! 😁</p>
+      </article>
+    </main>
+    <script src="/assets/prism.js"></script>
+  </body>
+</html>

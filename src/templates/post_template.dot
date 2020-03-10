@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body class="post line-numbers">
+    {{#def.header}}
+
     <main>
         <a class="back trippy" href="/index.html">Back</a>
         <article class="post">

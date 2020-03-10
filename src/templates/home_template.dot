@@ -8,8 +8,13 @@
     <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body class="home">
-    <h1>This is the homepage</h1>
+
+    {{#def.header}}
+
     <div class="home-wrapper">
+        <aside>
+            <p>I'm in the aside element</p>
+        </aside>
         <main>
             {{~ it.posts :post}}
             <div class="card post-card">
@@ -28,9 +33,6 @@
             </div>
             {{~}}
         </main>
-        <aside>
-            <p>I'm in the aside element</p>
-        </aside>
     </div>
 </body>
 </html>

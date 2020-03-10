@@ -21,6 +21,11 @@ const postsFolder = './_posts';
 const destFolder = './posts';
 const postTemplate = './src/templates/post_template.dot';
 const homeTemplate = './src/templates/home_template.dot';
+const headerTemplate = './src/templates/header_template.dot';
+
+const partials = {
+    header: doT.template(fs.readFileSync(headerTemplate))(),
+}
 
 fs.readdir(postsFolder, (error, filenames) => {
     let postsMetadata = [];
@@ -31,7 +36,7 @@ fs.readdir(postsFolder, (error, filenames) => {
             const postMetadata = converter.getMetadata();
             const postName = filename.replace('.md', '');
             const { mtime: modified, birthtime: created } = fs.statSync(`${postsFolder}/${filename}`);
-            const tempFn = doT.template(fs.readFileSync(postTemplate));
+            const tempFn = doT.template(fs.readFileSync(postTemplate), undefined, partials);
             const resultText = tempFn({
                 postName,
                 postContent,
@@ -61,7 +66,7 @@ fs.readdir(postsFolder, (error, filenames) => {
 });
 
 function buildHomepage(postsMetadata) {
-    const homePage = doT.template(fs.readFileSync(homeTemplate));
+    const homePage = doT.template(fs.readFileSync(homeTemplate), undefined, partials);
     const renderedHomePage = homePage({ posts: postsMetadata });
 
     fs.writeFileSync('./index.html', renderedHomePage);
