@@ -8,30 +8,28 @@
     <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body class="home">
-
-    {{#def.header}}
-
+     {{> header}}
     <div class="home-wrapper">
         <aside>
             <p>I'm in the aside element</p>
         </aside>
         <main>
-            {{~ it.posts :post}}
+            {{#posts}}
             <div class="card post-card">
                 <div class="post-card-header">
-                    <h4>{{=post.labelCreated}}</h4>
+                    <h4>{{labelCreated}}</h4>
                     <h2>
-                        <a href="/posts/{{=post.birthyear}}/{{=post.birthmonth}}/{{=post.birthday}}/{{=post.slug}}.html">{{=post.title}}</a>
+                        <a href="/posts/{{birthyear}}/{{birthmonth}}/{{birthday}}/{{slug}}.html">{{title}}</a>
                     </h2>
-                    {{~ post.tags :tag}}
-                        <a class="tag" href="#">{{=tag}}</a>
-                    {{~}}
+                    {{#tags}}
+                        <a class="tag" href="#">{{.}}</a>
+                    {{/tags}}
                 </div>
                 <div class="post-card-content">
-                    <p>{{=post.summary}}</p>
+                    <p>{{summary}}</p>
                 </div>
             </div>
-            {{~}}
+            {{/posts}}
         </main>
     </div>
 </body>

@@ -1,0 +1,18 @@
+<nav>
+    <div>
+        <img src="/assets/images/avatar.png" class="avatar">
+        <ul>
+            {{#pageHome}}<li class="active"> <a href="">Home</a> </li> {{/pageHome}}
+            {{^pageHome}}<li> <a href="">Home</a> </li> {{/pageHome}}
+
+            {{#pageTags}}<li class="active"> <a href="">Tags</a> </li> {{/pageTags}}
+            {{^pageTags}}<li> <a href="">Tags</a> </li> {{/pageTags}}
+
+            {{#pageAbout}}<li class="active"> <a href="">About</a> </li>{{/pageAbout}}
+            {{^pageAbout}}<li> <a href="">About</a> </li>{{/pageAbout}}
+
+            {{#pageContact}}<li class="active"> <a href="">Contact</a> </li>{{/pageContact}}
+            {{^pageContact}}<li> <a href="">Contact</a> </li>{{/pageContact}}
+        </ul>
+    </div>
+</nav>

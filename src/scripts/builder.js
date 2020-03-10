@@ -1,5 +1,5 @@
 const showdown  = require('showdown');
-const doT = require('dot');
+const Mustache = require('mustache');
 const fs = require('fs');
 const moment = require('moment');
 
@@ -19,13 +19,9 @@ const converter = new showdown.Converter({
 
 const postsFolder = './_posts';
 const destFolder = './posts';
-const postTemplate = './src/templates/post_template.dot';
-const homeTemplate = './src/templates/home_template.dot';
-const headerTemplate = './src/templates/header_template.dot';
-
-const partials = {
-    header: doT.template(fs.readFileSync(headerTemplate))(),
-}
+const postTemplate = './src/templates/post_template.mustache';
+const homeTemplate = './src/templates/home_template.mustache';
+const headerTemplate = fs.readFileSync('./src/templates/header_template.mustache', 'utf8');
 
 fs.readdir(postsFolder, (error, filenames) => {
     let postsMetadata = [];
@@ -36,11 +32,7 @@ fs.readdir(postsFolder, (error, filenames) => {
             const postMetadata = converter.getMetadata();
             const postName = filename.replace('.md', '');
             const { mtime: modified, birthtime: created } = fs.statSync(`${postsFolder}/${filename}`);
-            const tempFn = doT.template(fs.readFileSync(postTemplate), undefined, partials);
-            const resultText = tempFn({
-                postName,
-                postContent,
-            });
+            const resultText = Mustache.render(fs.readFileSync(postTemplate, 'utf8'), { postName, postContent }, { header: headerTemplate })
 
             postMetadata.tags = postMetadata.tags.split(', ');
 
@@ -66,8 +58,7 @@ fs.readdir(postsFolder, (error, filenames) => {
 });
 
 function buildHomepage(postsMetadata) {
-    const homePage = doT.template(fs.readFileSync(homeTemplate), undefined, partials);
-    const renderedHomePage = homePage({ posts: postsMetadata });
+    const renderedHomePage = Mustache.render(fs.readFileSync(homeTemplate, 'utf8'), { posts: postsMetadata, pageHome: true }, { header: headerTemplate });
 
     fs.writeFileSync('./index.html', renderedHomePage);
 }
