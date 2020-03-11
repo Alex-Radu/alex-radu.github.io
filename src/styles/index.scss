@@ -45,6 +45,7 @@ html {
 
   body {
     margin: 0;
+    padding-top: 7rem;
   }
 
   p {
@@ -77,18 +78,6 @@ a.trippy {
   color: #379683;
   font-size: 1.6rem;
 
-  &.back {
-      @extend %fa-icon;
-      @extend .fas;
-
-      text-decoration: none;
-
-      &:before {
-          content: fa-content($fa-var-arrow-left);
-          margin-right: .25rem;
-      }
-  }
-
   &:hover,
   &:focus {
       animation-duration: 1s;
@@ -112,6 +101,9 @@ nav {
   background-color: black;
   color: #EDF5E1;
   font-weight: bold;
+  margin-top: -7rem;
+  position: fixed;
+  width: 100%;
 
   div {
     display: flex;
@@ -139,11 +131,14 @@ nav {
         padding: .5rem 2rem;
 
         &:not(:last-of-type) {
-          border-right: 2px solid #EDF5E1;
+          border-style: solid;
+          border-width: 2px;
+          border-color: transparent;
+          border-right-color: #EDF5E1;
         }
 
         &.active {
-          border: 2px solid #EDF5E1;
+          border-color: #EDF5E1;
         }
 
         a {

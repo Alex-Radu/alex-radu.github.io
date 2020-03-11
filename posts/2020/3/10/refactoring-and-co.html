@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>refactoring-and-co</title>
+
+    <link rel="stylesheet" href="/assets/prism.css">
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body class="post line-numbers">
+     <nav>
+         <div>
+             <img src="/assets/images/avatar.png" class="avatar">
+             <ul>
+                 
+                 <li> <a href="/index.html">Home</a> </li> 
+
+                 
+                 <li> <a href="">Tags</a> </li> 
+
+                 
+                 <li> <a href="">About</a> </li>
+
+                 
+                 <li> <a href="">Contact</a> </li>
+             </ul>
+         </div>
+     </nav>    <main>
+        <article class="post">
+            <div class="heading-wrapper"><h1 >Metadata and refactoring</h1></div>
+<h2>Metadata</h2>
+<p>Generally, static sites that behave like blogs need a home page that has a list with links towards these posts. These links may contain the post title, maybe a short summary of what the post is about and even tags. For this, you need metadata that can be used when generating pages and provide information that is either too cumbersome to manually fill in, or even impossible. Luckily <code>showdown</code> provides support for metadata in the form of <strong>Front Matter</strong>; like so:</p>
+<pre><code class="markdown language-markdown">---
+title: This is the title of my post
+summary: In this post I talk about interesting things; do read! 😎
+tags: interesting, tools
+---</code></pre>
+<p>After I added this block as the first thing in the <code>.md</code> files, I added some lines in the <code>builder.js</code> file in order to extract this data and use it when rendering the <code>.html</code> pages</p>
+<pre><code class="js language-js">showdown.setOption('metadata', true);
+/* ... */
+const metadata = converter.getMetadata();
+/*
+This is how the object will look like:
+
+metadata = {
+    title: 'This is the title of my post',
+    summary: 'In this post I talk about interesting things; do read! 😎',
+    tags: 'interesting, tools'
+}
+*/</code></pre>
+<h2>Refactoring</h2>
+<p>The more complex the project becomes, the better the structure needs to be so that it is easier to maintain and change things. This means code splitting, renaming and moving files around and also building a more sensible location from where posts will be served. Here are some of the changes in more detail:</p>
+<h3>Split styles</h3>
+<p>It will be easier to changes styles for specific parts of the website if they're not all in one file. With <code>SCSS</code> I can have something like below. This way, if I want to change how unordered lists look like when they're part of a post, I can go directly to <code>post_page.scss</code> instead of searching through an ever-expanding file.</p>
+<h4><strong><code>index.scss</code></strong></h4>
+<pre><code class="css language-css">/* importing of other styles */
+@import "./home_page.scss";
+@import "./post_page.scss";
+
+/* defining variables */
+$some-variable: #FFF;</code></pre>
+<h3>Posts location</h3>
+<p>Serving posts from the root - e.g. <code>/some-post.html</code>, <code>/another-post.html</code>, etc. - is not nice. For one, I can't have duplicate titles. I want something like this: <code>/year/month/day/post-title.html</code>.</p>
+        </article>
+    </main>
+
+    <script src="/assets/prism.js"></script>
+</body>
+</html>
