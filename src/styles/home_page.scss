@@ -13,9 +13,10 @@ body.home {
 
   .post-card {
     border-radius: .5rem;
-    flex: 0 0 300px;
+    flex: 0 0 400px;
     display: flex;
     flex-direction: column;
+    margin-bottom: 1.6rem;
 
     .post-card-header {
       background: #05386B;
@@ -62,17 +63,59 @@ body.home {
     margin: 0 auto;
     width: 1280px;
     display: flex;
+    justify-content: space-between;
     padding: 1rem 0;
 
     main {
+      background-color: #FFFFFF;
       display: flex;
       flex-wrap: wrap;
-      width: 1000px;
-      justify-content: space-evenly;
+      width: 900px;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1.6rem;
     }
 
     aside {
-      width: 280px;
+      align-self: flex-start;
+      background-color: #FFFFFF;
+      width: 350px;
+
+      h1 {
+        margin-left: 1rem;
+      }
+
+      div.tags-wrapper {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        margin-bottom: .5rem;
+        justify-content: space-evenly;
+
+        a {
+          background-color: #05386B;
+          border-radius: .5rem;
+          box-shadow:
+            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+            0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+            0 12.5px 10px rgba(0, 0, 0, 0.06),
+            0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+            0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+            0 100px 80px rgba(0, 0, 0, 0.12);
+          color: #EDF5E1;
+          flex: 1 0 auto;
+          font-size: 1.6rem;
+          margin: 0 1rem 1rem;
+          padding: 1rem 1.5rem;
+          text-align: center;
+          text-decoration: none;
+
+          &:hover {
+            cursor: pointer;
+            background-color: #074583;
+          }
+        }
+      }
     }
   }
 }

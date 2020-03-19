@@ -11,11 +11,16 @@
     {{> header}}
     <div class="home-wrapper">
         <aside>
-            <p>I'm in the aside element</p>
+            <h1>Tags:</h1>
+            <div class="tags-wrapper">
+                {{#tags}}
+                    <a href="#">{{.}}</a>
+                {{/tags}}
+            </div>
         </aside>
         <main>
             {{#posts}}
-            <div class="card post-card">
+            <div class="card post-card" {{#tags}} {{/tags}}>
                 <div class="post-card-header">
                     <h4>{{labelCreated}}</h4>
                     <h2>

@@ -4,6 +4,8 @@ const sass = require('gulp-sass');
 const rename = require('gulp-rename');
 const cp = require('child_process');
 
+const { watch } = require('gulp');
+
 sass.compiler = require('node-sass');
 
 gulp.task('sass', () => {
@@ -32,12 +34,12 @@ gulp.task('connect', (done) => {
 });
 
 gulp.task('watch:md', (done) => {
-    gulp.watch('./_posts/*.md', gulp.series('md'));
+    watch(['./_posts/*.md', './src/templates/*.mustache', './src/scripts/*.js'], gulp.series('md'));
     done();
 });
 
 gulp.task('watch:sass', (done) => {
-    gulp.watch('./src/styles/**/*.scss', gulp.series('sass'));
+    watch('./src/styles/**/*.scss', gulp.series('sass'));
     done();
 });
 
