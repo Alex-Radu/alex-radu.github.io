@@ -4586,8 +4586,10 @@ body.post blockquote {
   body.post blockquote p {
     display: inline; }
 
-body.post pre code {
-  font-size: 1.4rem !important; }
+body.post pre {
+  margin: 1rem -3rem; }
+  body.post pre code {
+    font-size: 1.4rem !important; }
 
 body.post main {
   margin: 0 auto;
