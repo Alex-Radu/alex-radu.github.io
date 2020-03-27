@@ -1,0 +1,16 @@
+{
+	"birthday": 10,
+	"birthmonth": 3,
+	"birthyear": 2020,
+	"created": "2020-03-10T19:37:13.276Z",
+	"labelCreated": "16 days ago",
+	"labelModified": "11 hours ago",
+	"slug": "refactoring-and-co",
+	"title": "Metadata and refactoring",
+	"summary": "How I added metadata and changes I made for a better project structure",
+	"tags": [
+		"wip"
+	],
+	"bannerLink": "https://unsplash.com/@snaps_by_clark",
+	"bannerAuthor": "Clark Van Der Beken"
+}

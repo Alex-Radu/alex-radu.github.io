@@ -7,16 +7,32 @@
     "start": "node_modules/.bin/gulp",
     "build": "npm run clean && npm run build:content && npm run build:styles && npm run format",
     "clean": "rm -f ./posts/*.html && rm -f ./index.html",
-    "build:content": "node ./src/scripts/builder.js",
+    "build:content": "node ./build/scripts/builder.js",
     "build:styles": "sass ./src/styles/index.scss ./assets/styles.css",
-    "format": "prettier --write ./posts/**/*.html && prettier --write ./index.html"
+    "vue:serve": "vue-cli-service serve",
+    "vue:build": "vue-cli-service build",
+    "vue:lint": "vue-cli-service lint"
   },
   "author": "Alex-Radu",
   "license": "MIT",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.12.1"
+    "@fortawesome/fontawesome-free": "^5.12.1",
+    "core-js": "^3.6.4",
+    "prismjs": "^1.19.0",
+    "vue": "^2.6.11",
+    "vue-router": "^3.1.5"
   },
   "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.2.0",
+    "@vue/cli-plugin-eslint": "~4.2.0",
+    "@vue/cli-plugin-router": "~4.2.0",
+    "@vue/cli-service": "~4.2.0",
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-prismjs": "^2.0.1",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-vue": "^6.1.2",
     "gulp": "^4.0.2",
     "gulp-connect": "^5.7.0",
     "gulp-rename": "^2.0.0",
@@ -26,6 +42,8 @@
     "node-sass": "^4.13.1",
     "prettier": "1.19.1",
     "sass": "^1.26.1",
-    "showdown": "^1.9.1"
+    "sass-loader": "^8.0.2",
+    "showdown": "^1.9.1",
+    "vue-template-compiler": "^2.6.11"
   }
 }

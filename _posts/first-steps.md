@@ -2,6 +2,8 @@
 title: Basic SSG (Static Site Generator)
 summary: Some basic setup to take some Markdown files, compile them into HTML ones and end up with a functional static website
 tags: doT, shinedown, nodejs
+bannerLink: https://unsplash.com/@pawel_czerwinski
+bannerAuthor: Paweł Czerwiński
 ---
 # Basic SSG (Static Site Generator)
 

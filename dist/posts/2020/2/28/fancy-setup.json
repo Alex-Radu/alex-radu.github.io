@@ -1,0 +1,17 @@
+{
+	"birthday": 28,
+	"birthmonth": 2,
+	"birthyear": 2020,
+	"created": "2020-02-28T19:06:18.696Z",
+	"labelCreated": "a month ago",
+	"labelModified": "11 hours ago",
+	"slug": "fancy-setup",
+	"title": "Improving the Looks and the Dev environment",
+	"summary": "In this post I talk about how to set up some nice Gulp tasks that will help speed up development and also about my favourite SCSS feature",
+	"tags": [
+		"gulp",
+		"scss"
+	],
+	"bannerLink": "https://unsplash.com/@pawel_czerwinski",
+	"bannerAuthor": "Paweł Czerwiński"
+}

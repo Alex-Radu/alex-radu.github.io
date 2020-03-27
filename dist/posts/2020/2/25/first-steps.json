@@ -1,0 +1,18 @@
+{
+	"birthday": 25,
+	"birthmonth": 2,
+	"birthyear": 2020,
+	"created": "2020-02-25T20:12:18.738Z",
+	"labelCreated": "a month ago",
+	"labelModified": "11 hours ago",
+	"slug": "first-steps",
+	"title": "Basic SSG (Static Site Generator)",
+	"summary": "Some basic setup to take some Markdown files, compile them into HTML ones and end up with a functional static website",
+	"tags": [
+		"doT",
+		"shinedown",
+		"nodejs"
+	],
+	"bannerLink": "https://unsplash.com/@pawel_czerwinski",
+	"bannerAuthor": "Paweł Czerwiński"
+}

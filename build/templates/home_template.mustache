@@ -1,0 +1,28 @@
+<div class="home-wrapper">
+    <aside>
+        <h1>Tags:</h1>
+        <div class="tags-wrapper">
+            {{#tags}}
+                <a href="#">{{.}}</a>
+            {{/tags}}
+        </div>
+    </aside>
+    <main>
+        {{#posts}}
+        <div class="card post-card" {{#tags}} {{/tags}}>
+            <div class="post-card-header">
+                <h4>{{labelCreated}}</h4>
+                <h2>
+                    <a href="/posts/{{birthyear}}/{{birthmonth}}/{{birthday}}/{{slug}}.html">{{title}}</a>
+                </h2>
+                {{#tags}}
+                    <a class="tag" href="#">{{.}}</a>
+                {{/tags}}
+            </div>
+            <div class="post-card-content">
+                <p>{{summary}}</p>
+            </div>
+        </div>
+        {{/posts}}
+    </main>
+</div>

@@ -1,0 +1,44 @@
+<h1>Metadata and refactoring</h1>
+<h2>Metadata</h2>
+<p>Generally, static sites that behave like blogs need a home page that has a list with links towards these posts. These links may contain the post title, maybe a short summary of what the post is about and even tags. For this, you need metadata that can be used when generating pages and provide information that is either too cumbersome to manually fill in, or even impossible. Luckily <code>showdown</code> provides support for metadata in the form of <strong>Front Matter</strong>; like so:</p>
+<pre><code class="markdown language-markdown">---
+title: This is the title of my post
+summary: In this post I talk about interesting things; do read! 😎
+tags: interesting, tools
+---</code></pre>
+<p>After I added this block as the first thing in the <code>.md</code> files, I added some lines in the <code>builder.js</code> file in order to extract this data and use it when rendering the <code>.html</code> pages</p>
+<pre><code class="js language-js">showdown.setOption('metadata', true);
+/* ... */
+const metadata = converter.getMetadata();
+/*
+This is how the object will look like:
+
+metadata = {
+    title: 'This is the title of my post',
+    summary: 'In this post I talk about interesting things; do read! 😎',
+    tags: 'interesting, tools'
+}
+*/</code></pre>
+<p>There are a lot of potential features that are achievable with metadata. For example, speaking about the tags I added in the Front Matter, they can be extracted and used on the front page to be displayed as links to a page like <code>/tags/tag-name.html</code> where all the posts with the tag <strong>tag-name</strong> can be shown. So potentially, adding a /search-like/ feature to a static website. This is one of the things I did with metadata.</p>
+<h2>Refactoring</h2>
+<p>The more complex the project becomes, the better the structure needs to be so that it is easier to maintain and change things. This means code splitting, renaming and moving files around and also building a more sensible location from where posts will be served. Here are some of the changes in more detail:</p>
+<h3>Split styles</h3>
+<p>It will be easier to changes styles for specific parts of the website if they're not all in one file. With <code>SCSS</code> I can have something like below. This way, if I want to change how unordered lists look like when they're part of a post, I can go directly to <code>post_page.scss</code> instead of searching through an ever-expanding file.</p>
+<h4><strong><code>index.scss</code></strong></h4>
+<pre><code class="css language-css">/* importing of other styles */
+@import "./home_page.scss";
+@import "./post_page.scss";
+
+/* defining variables */
+$some-variable: #FFF;</code></pre>
+<h3>Posts location</h3>
+<p>I don't like serving posts from the root - e.g. <code>/some-post.html</code>, <code>/another-post.html</code>, etc. I want something more blog-ish, like this: <code>/year/month/day/post-title.html</code>. For this, I am extracting some information about each file:</p>
+<pre><code class="js language-js">    const { birthtime } = fs.statSync(file_Path_And_Name);
+    const birthday = moment(birthtime).date();
+    const birthmonth = moment(birthtime).month() + 1; // because of 0-index
+    const birthyear = moment(birthtime).year();
+
+    //and then
+    const postDestinationFolder = `./${destFolder}/${birthyear}/${birthmonth}/${birthday}`;</code></pre>
+<p>And with the help of <a href="https://momentjs.com/" class="trippy" target="_blank">Moment.js</a> which enables some quick and painless date manipulation I can extract the <strong>year</strong>, <strong>month</strong>, <strong>day</strong> and also do some other fancy things, like displaying <code>X time ago</code> when given a date. But, if you're not hackin' and slashin' and are more of a purist or are working on performance sensitive applications, you might want to look at this instead - <a href="https://github.com/you-dont-need/You-Dont-Need-Momentjs" class="trippy" target="_blank">You-Dont-Need-Momentjs</a></p>
+<p>This is it for now. See you next time! 😁</p>

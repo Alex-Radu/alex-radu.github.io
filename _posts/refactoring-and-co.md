@@ -2,6 +2,8 @@
 title: Metadata and refactoring
 summary: How I added metadata and changes I made for a better project structure
 tags: wip
+bannerLink: https://unsplash.com/@snaps_by_clark
+bannerAuthor: Clark Van Der Beken
 ---
 # Metadata and refactoring
 

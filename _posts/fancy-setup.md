@@ -2,6 +2,8 @@
 title: Improving the Looks and the Dev environment
 summary: In this post I talk about how to set up some nice Gulp tasks that will help speed up development and also about my favourite SCSS feature
 tags: gulp, scss
+bannerLink: https://unsplash.com/@pawel_czerwinski
+bannerAuthor: Paweł Czerwiński
 ---
 # Improving the Looks and the Dev environment
 
