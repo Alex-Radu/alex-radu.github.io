@@ -1,8 +1,10 @@
 /* eslint-disable */
 const showdown = require('showdown');
-const Mustache = require('mustache');
 const fs = require('fs');
 const moment = require('moment');
+var ncp = require('ncp').ncp;
+
+const isProduction = process.argv[2] === 'production';
 
 showdown.setFlavor('github');
 showdown.setOption('noHeaderId', true);
@@ -11,7 +13,8 @@ showdown.setOption('metadata', true);
 const converter = new showdown.Converter();
 
 const postsFolder = './_posts';
-const destFolder = './public/posts';
+const assetsFolder = './public/assets';
+const destFolder = isProduction ? './posts' : './public/posts';
 
 const postsMetadata = {
   posts: [],
@@ -55,5 +58,14 @@ postsMetadata.posts.sort((post_A, post_B) => {
   return 0;
 });
 
-fs.writeFileSync('./public/site-data.json', JSON.stringify(postsMetadata, null, 2));
+fs.writeFileSync(isProduction ? './site-data.json' : './public/site-data.json', JSON.stringify(postsMetadata, null, 2));
+
+if (isProduction) {
+  ncp(assetsFolder, './assets', function (err) {
+    if (err) {
+      return console.error(err);
+    }
+    console.log('done!');
+   });
+}
 /* eslint-enable */

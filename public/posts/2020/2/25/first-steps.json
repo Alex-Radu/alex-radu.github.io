@@ -4,7 +4,7 @@
 	"birthyear": 2020,
 	"created": "2020-02-25T20:12:18.738Z",
 	"labelCreated": "a month ago",
-	"labelModified": "11 hours ago",
+	"labelModified": "a day ago",
 	"slug": "first-steps",
 	"title": "Basic SSG (Static Site Generator)",
 	"summary": "Some basic setup to take some Markdown files, compile them into HTML ones and end up with a functional static website",
